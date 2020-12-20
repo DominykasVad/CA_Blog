@@ -49,6 +49,7 @@ public class UserController {
     @GetMapping("/delete/{id}")
     @PreAuthorize("hasRole('ADMIN')")
     public String deleteUser(@PathVariable long id) {
+        log.info("deleteUser({})", id);
         userService.deleteUserById(id);
         return "redirect:/private/user";
     }
