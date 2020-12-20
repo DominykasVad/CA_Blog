@@ -55,3 +55,9 @@ And
 docker-compose up -d
 ```
 
+Default admin user credentials:
+```
+Username: admin
+Password: P@ssword
+```
+
