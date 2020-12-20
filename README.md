@@ -26,8 +26,8 @@ services:
       - APP_DATABASE_NAME=ca_blog
       - APP_DATABASE_USERNAME=causer
       - APP_DATABASE_PASSWORD=capassword
-      - APP_PAGE_TITLE=some title asd
-      - APP_PAGE_FOOTER=some footer content
+      - APP_PAGE_TITLE=page tilte
+      - APP_PAGE_FOOTER=footer content
     ports:
       - 8080:8080
     depends_on:
