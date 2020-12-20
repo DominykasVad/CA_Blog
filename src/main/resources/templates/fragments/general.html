@@ -1,0 +1,20 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<footer th:fragment="footer" class="footer py-3 mt-5">
+    <div class="container-fluid">
+        <span class="text-muted" th:text="${@environment.getProperty('app_page_footer')}">footer content</span>
+    </div>
+</footer>
+
+<div th:fragment="markdownInfo" class="jumbotron">
+    <div class="container">
+        <h2 th:text="#{general.label.markdown}">Markdown</h2>
+        <p class="lead" th:text="#{general.label.markdown_more}">markdown more</p>
+        <a class="btn btn-primary btn-lg" href="https://www.markdownguide.org/getting-started/" target="_blank"
+           role="button" th:text="#{general.label.learn_more}">Learn more</a>
+    </div>
+</div>
+
+</html>
+
