@@ -27,4 +27,10 @@ public class UserController {
         model.addAttribute("usersPage", userService.getAllUsers(pageable));
         return "user/user-list";
     }
+
+    @GetMapping("/new")
+    public String getNewUserForm(Model model) {
+        model.addAttribute("user", new User());
+        return "user/new-user";
+    }
 }
