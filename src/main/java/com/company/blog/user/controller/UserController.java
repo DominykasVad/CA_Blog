@@ -51,6 +51,6 @@ public class UserController {
     public String deleteUser(@PathVariable long id) {
         log.info("deleteUser({})", id);
         userService.deleteUserById(id);
-        return "redirect:/private/user";
+        return "redirect:/public/user";
     }
 }

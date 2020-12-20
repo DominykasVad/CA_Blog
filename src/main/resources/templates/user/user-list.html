@@ -47,11 +47,10 @@
                 <td th:text="${user.userPosts.size()}">total posts</td>
                 <td th:text="${user.userComments.size()}">total comments</td>
                 <td class="btn-group">
-                    <a th:href="@{/private/user/delete/{id}(id=${user.id})}" class="btn btn-outline-danger"
+                    <a th:href="@{/public/user/delete/{id}(id=${user.id})}" class="btn btn-outline-danger"
                        type="submit">
                         <i class="fas fa-trash-alt"></i>
                     </a>
-                    <a href="#" class="btn btn-outline-primary"></a>
                 </td>
             </tr>
             </tbody>
