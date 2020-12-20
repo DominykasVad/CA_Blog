@@ -64,4 +64,18 @@ public class PostController {
         postService.deletePostById(id);
         return "redirect:/public/post";
     }
+
+    @GetMapping("/edit/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public String getEditPostForm(@PathVariable long id, Model model) {
+        model.addAttribute("post", postService.getPostById(id));
+        return "post/edit-post";
+    }
+
+    @PostMapping("/edit-post")
+    @PreAuthorize("hasRole('ADMIN')")
+    public String editPost(@ModelAttribute("post") Post post) {
+        postService.updatePost(post);
+        return "redirect:/public/post/" + post.getId();
+    }
 }
