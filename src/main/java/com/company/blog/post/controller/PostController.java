@@ -56,4 +56,12 @@ public class PostController {
         Post savedPost = postService.addPost(post);
         return "redirect:/public/post/" + savedPost.getId();
     }
+
+    @GetMapping("/delete/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public String deletePost(@PathVariable long id) {
+        log.info("deletePost({})", id);
+        postService.deletePostById(id);
+        return "redirect:/public/post";
+    }
 }
