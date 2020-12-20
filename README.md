@@ -7,7 +7,7 @@ CodeAcademy.lt homework blog project
 ### Prerequisites
 
  - Docker
- - docker-copose
+ - docker-compose
 
 ### Installing
 
