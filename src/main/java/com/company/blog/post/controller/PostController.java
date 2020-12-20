@@ -8,12 +8,11 @@ import com.company.blog.user.model.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @Controller
@@ -41,5 +40,20 @@ public class PostController {
         model.addAttribute("commentPage", commentService.getCommentsByPost(post, pageable));
         model.addAttribute("newComment", new Comment());
         return "post/single-post";
+    }
+
+    @GetMapping("/new")
+    @PreAuthorize("hasRole('ADMIN')")
+    public String getNewPostForm(Model model) {
+        model.addAttribute("post", new Post());
+        return "post/new-post";
+    }
+
+    @PostMapping
+    @PreAuthorize("hasRole('ADMIN')")
+    public String addPost(@ModelAttribute("post") Post post, @AuthenticationPrincipal User user) {
+        post.setAuthor(user);
+        Post savedPost = postService.addPost(post);
+        return "redirect:/public/post/" + savedPost.getId();
     }
 }
