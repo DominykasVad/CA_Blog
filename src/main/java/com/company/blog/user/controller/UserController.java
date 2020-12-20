@@ -1,5 +1,6 @@
 package com.company.blog.user.controller;
 
+import com.company.blog.user.model.User;
 import com.company.blog.user.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Pageable;
@@ -7,8 +8,13 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.validation.Valid;
 
 @Slf4j
 @Controller
@@ -32,5 +38,14 @@ public class UserController {
     public String getNewUserForm(Model model) {
         model.addAttribute("user", new User());
         return "user/new-user";
+    }
+
+    @PostMapping("/new")
+    public String addNewUser(@ModelAttribute("user") @Valid User user, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "user/new-user";
+        }
+        userService.addUser(user);
+        return "redirect:/public/post";
     }
 }
