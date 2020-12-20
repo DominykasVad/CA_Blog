@@ -47,4 +47,12 @@ public class CommentController {
         }
         return "redirect:/public/post/" + originalComment.getPost().getId();
     }
+
+    @GetMapping("/delete/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public String deleteComment(@PathVariable long id) {
+        long commentPostId = commentService.getCommentById(id).getPost().getId();
+        commentService.deleteCommentById(id);
+        return "redirect:/public/post/" + commentPostId;
+    }
 }
