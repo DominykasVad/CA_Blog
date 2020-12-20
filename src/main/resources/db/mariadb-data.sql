@@ -1,9 +1,9 @@
 INSERT INTO users (email, name, password, surname, username)
 VALUES ('foo@bar.com',
         'Admin',
-        '{bcrypt}$2y$12$Ngi.pR.qcdFkMKVHlQl0AeKyn68vF9tId6Hk7So478VVr54TMlLfy/q',
+        '{bcrypt}$2y$12$opcSBUuyU/i5S9SWcN5mc.f85WaioHDbT1Pi2WQbtCAVOoBl91cFC',
         'Admin',
-        'Admin');
+        'admin');
 
 INSERT INTO role (role_name)
 VALUES ('USER'),
