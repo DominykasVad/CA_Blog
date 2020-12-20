@@ -36,7 +36,6 @@ public class PostController {
 
     @GetMapping("/{id}")
     public String getSinglePost(@PathVariable long id, @PageableDefault(size = 10) Pageable pageable, @AuthenticationPrincipal User user, Model model) {
-        log.info("getSinglePost({})", id);
         Post post = postService.getPostById(id);
         model.addAttribute("post", post);
         model.addAttribute("commentPage", commentService.getCommentsByPost(post, pageable));
