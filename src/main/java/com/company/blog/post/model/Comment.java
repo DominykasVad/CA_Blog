@@ -24,13 +24,13 @@ public class Comment {
     private User author;
 
     @ManyToOne
-//    @JoinColumn(name = "post_id")
     private Post post;
 
     @Transient
     private long postId;
 
     @Column(name = "content")
+    @Lob
     private String content;
 
     @CreationTimestamp

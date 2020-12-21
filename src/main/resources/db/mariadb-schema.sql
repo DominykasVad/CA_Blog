@@ -37,7 +37,7 @@ create table comments
 (
     id         bigint auto_increment
         primary key,
-    content    varchar(255) null,
+    content    longtext     null,
     created_at datetime(6)  null,
     updated_at datetime(6)  null,
     user_id    bigint       null,
