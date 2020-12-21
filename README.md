@@ -45,13 +45,14 @@ services:
       - MYSQL_USER=causer
       - MYSQL_PASSWORD=capassword
     volumes:
-      - ./database/config:/config
+      - ./config:/config
     restart: unless-stopped # Restart policy
 ```
 
-And
+And in same directory as docker-compose.yaml file
 
 ```
+mkdir config
 docker-compose up -d
 ```
 
