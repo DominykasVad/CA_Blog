@@ -38,7 +38,7 @@ services:
       - MYSQL_DATABASE=sampla_database
       - MYSQL_USER=sample_user
       - MYSQL_PASSWORD=sample_password
-        volumes:
-          # MariaDB volume mounted in docker-compose file location
-          - .database/config:/config
+    volumes:
+      # MariaDB volume mounted in docker-compose file location
+      - ./database/config:/config
     restart: unless-stopped # Restart policy

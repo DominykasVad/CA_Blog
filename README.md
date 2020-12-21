@@ -44,8 +44,8 @@ services:
       - MYSQL_DATABASE=ca_blog
       - MYSQL_USER=causer
       - MYSQL_PASSWORD=capassword
-        volumes:
-          - .database/config:/config
+    volumes:
+      - ./database/config:/config
     restart: unless-stopped # Restart policy
 ```
 
